@@ -20,7 +20,7 @@ you can run `localPresence` locally or in a docker container.
 
 you will need a [firebase](https://firebase.google.com) account.
 
-create a `.env` file wihtin the cloned directory and provide some credentials and ULRs.
+create a `.env` file wihtin the cloned directory and provide some credentials and URLs.
 
 if you run home assistant 0.78 or later, you need to provided a `HOME_ASSITANT_LONG_LIVED_TOKEN`, see [authenticated requests](https://developers.home-assistant.io/docs/en/auth_api.html#making-authenticated-requests)
 
@@ -66,6 +66,8 @@ run the container:
 ```
 docker run -d local-presence
 ```
+
+If you need to make changes to the `.env` file, you have to rebuild the docker image.
 
 ---
 
