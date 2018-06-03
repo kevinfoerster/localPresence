@@ -1,0 +1,30 @@
+{
+  "name": "localpresence",
+  "version": "1.0.0",
+  "description": "provides a proxy for geofency using firebase and node js Edit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinfoerster/localPresence.git"
+  },
+  "keywords": [
+    "geofency",
+    "home",
+    "assistant"
+  ],
+  "author": "Kevin Förster <kevin@kevinfoerster.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinfoerster/localPresence/issues"
+  },
+  "homepage": "https://github.com/kevinfoerster/localPresence#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "firebase": "^5.0.4",
+    "request": "^2.87.0"
+  }
+}
