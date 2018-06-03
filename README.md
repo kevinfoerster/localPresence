@@ -58,5 +58,11 @@ docker build  -t local-presence .
 run the container:
 
 ```
-docker run local-presence
+docker run local-presence -d
 ```
+
+---
+
+in any case, you should see an update whenever you exit or enter a location like `Update successful! Server responded with: Setting location for ABCDEF1234567890`
+
+for testing purposes you can press the enter and exit buttons within the geofency webhhok settings
