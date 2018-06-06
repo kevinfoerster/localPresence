@@ -3,14 +3,14 @@ const admin = require('firebase-admin');
 
 admin.initializeApp(functions.config().firebase);
 
-const setData = (id, entry) => {
+const setData = (id, body) => {
   return admin
     .database()
-    .ref(`${id}/entry`)
-    .set(entry);
+    .ref(`${id}`)
+    .set(body);
 };
 exports.checkIn = functions.https.onRequest((req, res) => {
-  return Promise.all([setData(req.body.device, req.body.entry)]).then(() => {
+  return Promise.all([setData(req.body.device, req.body)]).then(() => {
     return res.send(`OK`);
   });
 });

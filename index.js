@@ -12,9 +12,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var database = firebase.database();
-
-database.ref('users');
 firebase
   .database()
   .ref()
