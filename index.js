@@ -2,7 +2,8 @@
 require('dotenv').load();
 var request = require('request');
 var firebase = require('firebase');
-
+const location = process.env.LOCATION;
+const auth_token = process.env.HOME_ASSITANT_LONG_LIVED_TOKEN;
 // Initialize Firebase
 var config = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -18,16 +19,23 @@ firebase
   .database()
   .ref()
   .on('child_changed', function(snapshot) {
-    request.post(
-      {
-        url: process.env.REQUEST_URL,
-        formData: snapshot.val()
-      },
-      function optionalCallback(err, httpResponse, body) {
-        if (err) {
-          return console.error('upload failed:', err);
+    if (!location || snapshot.val().name === location) {
+      request.post(
+        {
+          url: process.env.REQUEST_URL,
+          headers: auth_token
+            ? {
+                Authorization: `Bearer ${auth_token}`
+              }
+            : null,
+          formData: snapshot.val()
+        },
+        function optionalCallback(err, httpResponse, body) {
+          if (err) {
+            return console.error('upload failed:', err);
+          }
+          console.log('Update successful!  Server responded with:', body);
         }
-        console.log('Update successful!  Server responded with:', body);
-      }
-    );
+      );
+    }
   });

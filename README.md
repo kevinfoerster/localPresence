@@ -22,11 +22,17 @@ you will need a [firebase](https://firebase.google.com) account.
 
 create a `.env` file wihtin the cloned directory and provide some credentials and ULRs.
 
+if you run home assistant 0.78 or later, you need to provided a `HOME_ASSITANT_LONG_LIVED_TOKEN`, see [authenticated requests](https://developers.home-assistant.io/docs/en/auth_api.html#making-authenticated-requests)
+
+additionally, the optional `LOCATION` allows you to listen for only one location instead of all, the name corresponds to the name of the location setup in geofency eg. i use a geofency location named `home` and multiple instances of `localPresence` at different locations, it is set to `LOCATION="home"` at home and therefor ignores any other changes to firebase not container `home`
+
 ```
 REQUEST_URL=http://home-assistant:8123/api/geofency
 FIREBASE_API_KEY=ABCDEF123456
 FIREBASE_DATABASE_URL=https://example.firebaseio.com
 FIREBASE_PROJECT_ID=firebase-example
+HOME_ASSITANT_LONG_LIVED_TOKEN="ABCDEF123456"
+LOCATION="home"
 ```
 
 `REQUEST_URL` is the url which should be called upon update, all firebase related infos can be found at the [firebase console](https://console.firebase.google.com/project/firebase-omnipresence/settings/general/), click "Add Firebase to your web app" and you will be provided with all the necessary details.
