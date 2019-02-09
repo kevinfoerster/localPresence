@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 require('dotenv').load();
+var querystring = require('querystring');
+
 var request = require('request');
 var firebase = require('firebase');
 const location = process.env.LOCATION;
@@ -20,17 +22,20 @@ firebase
       request.post(
         {
           url: process.env.REQUEST_URL,
-          headers: auth_token
-            ? {
-                Authorization: `Bearer ${auth_token}`
-              }
-            : null,
-          formData: snapshot.val()
+          headers: {
+            'User-Agent': 'Geofency/1108 CFNetwork/976 Darwin/18.2.0',
+            'content-type': 'application/x-www-form-urlencoded',
+            connection: 'keep-alive'
+          },
+
+          body: querystring.stringify(snapshot.val())
         },
         function optionalCallback(err, httpResponse, body) {
           if (err) {
             return console.error('upload failed:', err);
           }
+          // console.log(process.env.REQUEST_URL, snapshot.val());
+
           console.log('Update successful!  Server responded with:', body);
         }
       );

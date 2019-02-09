@@ -23,10 +23,12 @@
   },
   "homepage": "https://github.com/kevinfoerster/localPresence#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "firebase": "^5.0.4",
     "firebase-admin": "^5.12.1",
     "firebase-functions": "^1.0.4",
+    "nodemon": "^1.18.10",
     "request": "^2.87.0"
   }
 }
